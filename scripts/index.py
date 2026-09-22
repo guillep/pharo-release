@@ -38,52 +38,51 @@ DEFAULT_LOGO_PATH = Path(__file__).with_name("Pharo_Beacon_v3.0.svg")
 
 CSS = """
 :root {
-    --pharo-blue: #2e6da4;
-    --pharo-blue-soft: #7aaedb;
-    --pharo-blue-pale: #a9cce8;
-    --pharo-blue-ink: #143652;
-    --pr-bg: #ffffff;
-    --pr-surface: #f6f8fb;
-    --pr-border: #dbe4ee;
-    --pr-text: #1d2631;
-    --pr-text-muted: #5b6b7a;
-    --pr-accent: #2e6da4;
-    --pr-code-bg: #eef3f8;
-    --pr-shadow: 0 1px 3px rgba(20, 54, 82, 0.08);
+    --pharo-blue: #3297d4;
+    --pharo-blue-soft: #dcedf7;
+    --pharo-orange: #f15a24;
+    --pr-bg: #f7f7f7;
+    --pr-surface: #ffffff;
+    --pr-border: #dddddd;
+    --pr-text: #333333;
+    --pr-text-muted: #777777;
+    --pr-accent: #3297d4;
+    --pr-code-bg: #f4f4f4;
+    --pr-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     color-scheme: light dark;
 }
 
 html[data-theme="dark"] {
-    --pr-bg: #101418;
-    --pr-surface: #171c22;
-    --pr-border: #2a333d;
-    --pr-text: #e8edf3;
-    --pr-text-muted: #93a3b3;
-    --pr-accent: #7aaedb;
-    --pr-code-bg: #1d2530;
+    --pr-bg: #20252a;
+    --pr-surface: #2b3035;
+    --pr-border: #454b50;
+    --pr-text: #f4f4f4;
+    --pr-text-muted: #b8b8b8;
+    --pr-accent: #62b1e3;
+    --pr-code-bg: #353b40;
     --pr-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --pr-bg: #101418;
-        --pr-surface: #171c22;
-        --pr-border: #2a333d;
-        --pr-text: #e8edf3;
-        --pr-text-muted: #93a3b3;
-        --pr-accent: #7aaedb;
-        --pr-code-bg: #1d2530;
+        --pr-bg: #20252a;
+        --pr-surface: #2b3035;
+        --pr-border: #454b50;
+        --pr-text: #f4f4f4;
+        --pr-text-muted: #b8b8b8;
+        --pr-accent: #62b1e3;
+        --pr-code-bg: #353b40;
         --pr-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     }
     html[data-theme="light"] {
-        --pr-bg: #ffffff;
-        --pr-surface: #f6f8fb;
-        --pr-border: #dbe4ee;
-        --pr-text: #1d2631;
-        --pr-text-muted: #5b6b7a;
-        --pr-accent: #2e6da4;
-        --pr-code-bg: #eef3f8;
-        --pr-shadow: 0 1px 3px rgba(20, 54, 82, 0.08);
+        --pr-bg: #f7f7f7;
+        --pr-surface: #ffffff;
+        --pr-border: #dddddd;
+        --pr-text: #333333;
+        --pr-text-muted: #777777;
+        --pr-accent: #3297d4;
+        --pr-code-bg: #f4f4f4;
+        --pr-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
     }
 }
 
@@ -95,15 +94,15 @@ body {
     margin: 0;
     background: var(--pr-bg);
     color: var(--pr-text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Helvetica, Arial, sans-serif;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
     line-height: 1.55;
 }
 
 .pharo-index {
-    max-width: 860px;
+    max-width: 980px;
     margin: 0 auto;
-    padding: 3rem 1.25rem 4rem;
+    padding: 2.5rem 1.25rem 4rem;
 }
 
 .pharo-index h1, .pharo-index h2, .pharo-index h3 {
@@ -116,13 +115,13 @@ body {
     align-items: center;
     gap: 1rem;
     padding-bottom: 1.25rem;
-    border-bottom: 2px solid var(--pr-border);
+    border-bottom: 5px solid var(--pr-code-bg);
     margin-bottom: 1.5rem;
 }
 
 .index-header .project-name {
     margin: 0;
-    font-size: 3rem;
+    font-size: 3.15rem;
     line-height: 1;
 }
 
@@ -136,7 +135,7 @@ body {
 .latest-release {
     background: var(--pr-code-bg);
     border: 1px solid var(--pr-border);
-    border-radius: 8px;
+    border-radius: 2px;
     padding: 1rem 1.1rem;
 }
 
@@ -186,7 +185,7 @@ body {
 .release {
     background: var(--pr-surface);
     border: 1px solid var(--pr-border);
-    border-radius: 12px;
+    border-radius: 2px;
     padding: 1.1rem 1.25rem;
     box-shadow: var(--pr-shadow);
 }
