@@ -29,10 +29,18 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from semver import compare, is_prerelease, parse  # noqa: E402
 
 
-def from_github_release(raw: dict) -> dict:
+def archive_artifacts(repository: str, tag: str) -> list[dict]:
+    base_url = f"https://github.com/{repository}/archive/refs/tags/{tag}"
+    return [
+        {"name": "Source code (zip)", "url": f"{base_url}.zip"},
+        {"name": "Source code (tar.gz)", "url": f"{base_url}.tar.gz"},
+    ]
+
+
+def from_github_release(raw: dict, repository: str) -> dict:
     tag = raw.get("tag_name", "")
     version = tag[1:] if tag.startswith("v") else tag
-    artifacts = []
+    artifacts = archive_artifacts(repository, tag) if tag else []
     for asset in raw.get("assets", []) or []:
         name = asset.get("name", "")
         url = asset.get("browser_download_url", "")
@@ -71,7 +79,7 @@ def main() -> int:
         tag = raw.get("tag_name", "")
         if tag == args.tag:
             continue
-        prior.append(from_github_release(raw))
+        prior.append(from_github_release(raw, args.repository))
         if parse(tag) is None or compare(tag, args.tag) >= 0:
             continue
         if previous is None or compare(tag, previous) > 0:
@@ -83,11 +91,14 @@ def main() -> int:
         "version": args.version,
         "date": args.date,
         "prerelease": is_prerelease(args.version),
-        "artifacts": [{
-            "name": "index.html",
-            "url": f"https://github.com/{args.repository}/releases/download/"
-            f"{args.tag}/index.html",
-        }],
+        "artifacts": [
+            {
+                "name": "index.html",
+                "url": f"https://github.com/{args.repository}/releases/download/"
+                f"{args.tag}/index.html",
+            },
+            *archive_artifacts(args.repository, args.tag),
+        ],
         "changes": changes,
     }
 

@@ -127,6 +127,14 @@ Artifact links inside the index are absolute GitHub release URLs.
           {
             "name": "index.html",
             "url": "https://github.com/owner/repo/releases/download/v2.7.0/index.html"
+          },
+          {
+            "name": "Source code (zip)",
+            "url": "https://github.com/owner/repo/archive/refs/tags/v2.7.0.zip"
+          },
+          {
+            "name": "Source code (tar.gz)",
+            "url": "https://github.com/owner/repo/archive/refs/tags/v2.7.0.tar.gz"
           }
         ]
       "changes": "## Fixed\n- ..."           // Markdown release description/changelog
